@@ -7,6 +7,12 @@ class Time:
         self.minute = minute
         self.second = second
 
+    def __str__(self):
+        return f'{self.hour:02d}:{self.minute:02d}:{self.second:02d}'
+
+    def __repr__(self):
+        return f'{self.hour:02d}.{self.minute:02d}.{self.second:02d}'
+
     def format_time(self):
         return f'{self.hour:02d}:{self.minute:02d}:{self.second:02d}'
 
@@ -31,10 +37,3 @@ class Time:
         if self.minute >= 60 or self.second >= 60 or self.hour >= 24:
             return False
         return True
-
-# External function - stays OUTSIDE the class!
-def sec_to_time(seconds):
-    time = Time()
-    minutes, time.second = divmod(seconds, 60)
-    time.hour, time.minute = divmod(minutes, 60)
-    return time
